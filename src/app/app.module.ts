@@ -12,7 +12,7 @@ import { NopagefountComponent } from './nopagefount/nopagefount.component';
 @NgModule({
   declarations: [
     AppComponent,
-    NopagefountComponent,
+    NopagefountComponent
 
   ],
   imports: [
