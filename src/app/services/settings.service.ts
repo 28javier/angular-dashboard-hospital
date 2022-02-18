@@ -8,7 +8,7 @@ export class SettingsService {
   private linkTheme = document.getElementById('theme');
 
   constructor() {
-    console.log('Setting desde el servicio');
+    // console.log('Setting desde el servicio');
     this.thema();
   }
 
