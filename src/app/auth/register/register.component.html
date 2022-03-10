@@ -4,49 +4,86 @@
 <section id="wrapper" class="login-register login-sidebar"
     style="background-image:url(../assets/images/background/login-register.jpg);">
     <div class="login-box card">
-        <div class="card-body">
-            <form class="form-horizontal form-material" id="loginform" action="index.html">
+        <div class="card-body" style="overflow:scroll; height:400px;">
+            <form class="form-horizontal form-material m-b-50" id="loginform" autocomplete="off" autocapitalize="words"
+                [formGroup]="registerForm" (ngSubmit)="crearUsuario()">
                 <a href="javascript:void(0)" class="text-center db"><img src="../assets/images/logo-icon.png"
                         alt="Home" /><br /><img src="../assets/images/logo-text.png" alt="Home" /></a>
-                <h3 class="box-title m-t-40 m-b-0">Register Now</h3><small>Create your account and enjoy</small>
-                <div class="form-group m-t-20">
+                <h3 class="box-title m-t-20 m-b-0">Regístrate ahora</h3>
+                <small class="m-b-20">Crea tu cuenta y disfruta</small>
+                <div class="form-group m-t-5">
                     <div class="col-xs-12">
-                        <input class="form-control" type="text" required="" placeholder="Name">
+                        <input class="form-control" type="text" placeholder="Name1" formControlName="nombre1">
                     </div>
+                    <small *ngIf="campoNoValido('nombre1')" class="text-danger">Debes Ingresar el primer nombre</small>
                 </div>
                 <div class="form-group ">
                     <div class="col-xs-12">
-                        <input class="form-control" type="text" required="" placeholder="Email">
+                        <input class="form-control" type="text" placeholder="Name2" formControlName="nombre2">
                     </div>
+                    <small *ngIf="campoNoValido('nombre2')" class="text-danger">Debes Ingresar el segundo nombre</small>
+
                 </div>
                 <div class="form-group ">
                     <div class="col-xs-12">
-                        <input class="form-control" type="password" required="" placeholder="Password">
+                        <input class="form-control" type="text" placeholder="Apellido1" formControlName="apellido1">
                     </div>
+                    <small *ngIf="campoNoValido('apellido1')" class="text-danger">Debes Ingresar el primer
+                        apellido</small>
+                </div>
+                <div class="form-group ">
+                    <div class="col-xs-12">
+                        <input class="form-control" type="text" placeholder="Apellido2" formControlName="apellido2">
+                    </div>
+                    <small *ngIf="campoNoValido('apellido2')" class="text-danger">Debes Ingresar el segundo
+                        apellido</small>
+                </div>
+                <div class="form-group ">
+                    <div class="col-xs-12">
+                        <input class="form-control" type="email" placeholder="Email" formControlName="email">
+                    </div>
+                    <small *ngIf="campoNoValido('email')" class="text-danger">El email es obligatorio y debe ser
+                        valido.</small>
+                </div>
+                <div class="form-group ">
+                    <div class="col-xs-12">
+                        <input class="form-control" type="password" placeholder="Password" formControlName="password">
+                    </div>
+                    <small *ngIf="campoNoValido('password')" class="text-danger">Debes Ingresar el password</small>
+                    <small *ngIf="cantrasenasNoValidas()" class="text-danger">Las contraseñas deben ser Iguales</small>
                 </div>
                 <div class="form-group">
                     <div class="col-xs-12">
-                        <input class="form-control" type="password" required="" placeholder="Confirm Password">
+                        <input class="form-control" type="password" placeholder="Confirm Password"
+                            formControlName="password2">
                     </div>
+                    <small *ngIf="campoNoValido('password2')" class="text-danger">Debes Ingresar el password</small>
+                    <small *ngIf="cantrasenasNoValidas()" class="text-danger">Las contraseñas deben ser Iguales</small>
+
                 </div>
                 <div class="form-group row">
                     <div class="col-md-12">
                         <div class="checkbox checkbox-primary p-t-0">
-                            <input id="checkbox-signup" type="checkbox">
-                            <label for="checkbox-signup"> I agree to all <a href="#">Terms</a></label>
+                            <input id="checkbox-signup" type="checkbox" formControlName="terminos" required>
+                            <label for="checkbox-signup"> Estoy de acuerdo con todo <a href="#">Terminos</a></label>
                         </div>
+                        <small *ngIf="aceptarTerminos()" class="text-danger">Debes selecionar los
+                            terminos</small>
                     </div>
                 </div>
-                <div class="form-group text-center m-t-20">
+                <div class="form-group text-center m-t-10">
                     <div class="col-xs-12">
                         <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light"
-                            type="submit">Sign Up</button>
+                            type="submit">Crear Cuenta</button>
                     </div>
                 </div>
                 <div class="form-group m-b-0">
                     <div class="col-sm-12 text-center">
-                        <p>Already have an account? <a href="pages-login-2.html" class="text-info m-l-5"><b>Sign
-                                    In</b></a></p>
+                        <p>Ya tienes una cuenta?
+                            <a routerLink="/login" class="text-info m-l-5">
+                                <b>Login</b>
+                            </a>
+                        </p>
                     </div>
                 </div>
             </form>
